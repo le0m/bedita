@@ -42,7 +42,7 @@
  */
 
 // BEdita URL
-$config['beditaUrl']="http://localhost/bedita";
+$config['beditaUrl']= (string) env('BEDITA_URL') ?: "http://localhost/bedita";
 
 /** Multimedia - root folder on filesystem (use absolute path, if you need to change it)
  **

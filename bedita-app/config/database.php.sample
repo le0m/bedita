@@ -28,26 +28,37 @@
  */
 class DATABASE_CONFIG
 {
-	var $default = array('driver' => 'mysql',
-							'persistent' => false,
-							'connect' => 'mysql_connect',
-							'host' => 'localhost',
-							'login' => 'user',
-							'password' => 'password',
-							'database' => 'bedita',
-							'schema' => '',
-							'prefix' => '',
-							'encoding' => 'utf8');
+	public $default;
 
-	var $test = array('driver' => 'mysql',
-							'persistent' => false,
-							'connect' => 'mysql_connect',
-							'host' => 'localhost',
-							'login' => 'usertest',
-							'password' => 'passwordtest',
-							'database' => 'bedita_test',
-							'schema' => '',
-							'prefix' => '',
-							'encoding' => 'utf8');
+	public $test;
+
+    public function __construct()
+    {
+        $this->default = array(
+            'driver' => 'mysql',
+            'persistent' => false,
+            'connect' => 'mysql_connect',
+            'host' => (string) env('DB_HOST') ?: 'localhost',
+            'login' => (string) env('DB_USER') ?: 'user',
+            'password' => (string) env('DB_PASSWORD') ?: 'password',
+            'database' => (string) env('DB_NAME') ?: 'bedita',
+            'schema' => '',
+            'prefix' => '',
+            'encoding' => 'utf8'
+        );
+
+        $this->test = array(
+            'driver' => 'mysql',
+            'persistent' => false,
+            'connect' => 'mysql_connect',
+            'host' => 'localhost',
+            'login' => 'usertest',
+            'password' => 'passwordtest',
+            'database' => 'bedita_test',
+            'schema' => '',
+            'prefix' => '',
+            'encoding' => 'utf8'
+        );
+    }
 }
 ?>
