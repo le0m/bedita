@@ -1,0 +1,28 @@
+version: '2.4'
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: $DB_NAME
+      MYSQL_USER: $DB_USER
+      MYSQL_PASSWORD: $DB_PASSWORD
+
+  bedita:
+    image: bedita:dev
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./bedita-app/webroot/files:/var/www/bedita/bedita-app/webroot/files
+    env_file:
+      - .env.sample
+    depends_on:
+      - mysql
+
+volumes:
+  mysql-data:

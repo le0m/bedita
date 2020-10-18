@@ -20,6 +20,7 @@
 .DS_Store
 /.vscode
 /.history
+/.env
 
 # /bedita-app/
 /bedita-app/.cache
