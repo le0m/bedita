@@ -25,8 +25,8 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Configure healthcheck
-#HEALTHCHECK --interval=30s --timeout=3s --start-period=1m \
-#    CMD curl -f http://localhost/status || exit 1
+HEALTHCHECK --interval=30s --timeout=3s --start-period=1m \
+    CMD curl -s -o /dev/null -I -w "%{http_code}" http://localhost:8080
 
 # Setup user and workdir, expose port and volume
 USER www-data:www-data
