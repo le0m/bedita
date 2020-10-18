@@ -224,3 +224,5 @@ if (!$isCli) {
 }
 
 App::import('Lib', 'Mask');
+
+CakeLog::config('unixStreams', array('engine' => 'StreamLog'));
